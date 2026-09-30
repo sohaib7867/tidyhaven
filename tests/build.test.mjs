@@ -38,7 +38,7 @@ test('live admin does not initialize without a configured repository',async()=>{
  await vm.runInNewContext(code,context);assert.equal(initialized,false);assert.match(status.textContent,/Connect this site/);
 });
 test('CMS fields target source files and use GitHub editorial workflow',()=>{
- const c=cmsConfig('owner/repo');assert.equal(c.backend.name,'github');assert.equal(c.publish_mode,'editorial_workflow');assert.equal(c.local_backend,undefined);assert.equal(c.media_folder,'public/uploads');assert.equal(c.collections[0].format,'json');assert.equal(c.collections[0].folder,'content/posts');assert.equal(c.collections[0].fields.find(f=>f.name==='blocks').types.length,3);
+ const c=cmsConfig('owner/repo');assert.equal(c.backend.name,'github');assert.equal(c.publish_mode,'editorial_workflow');assert.equal(c.local_backend,undefined);assert.equal(c.media_folder,'public/uploads');assert.equal(c.collections[0].format,'json');assert.equal(c.collections[0].folder,'content/posts');assert.equal(c.collections[0].fields.find(f=>f.name==='blocks').types.length,5);
 });
 test('advertising integrations are included with clear sponsored semantics',async()=>{
  const footer=await readFile('templates/footer.html','utf8');
