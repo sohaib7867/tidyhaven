@@ -6,7 +6,7 @@
   const local=['localhost','127.0.0.1'].includes(location.hostname);
   if(local){config.local_backend=true;config.backend.repo=config.backend.repo||'local/preview';config.publish_mode='simple';document.getElementById('local-note').hidden=false;}
   else if(!config.backend.repo){status.textContent='Your editor is installed. Connect this site to its GitHub repository and configure GitHub sign-in in Netlify to activate saving and publishing.';return;}
-  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='/admin/vendor/decap-cms.js';s.onload=resolve;s.onerror=()=>reject(new Error('The editor could not load. Refresh this page to try again.'));document.body.append(s);});
+  if(!window.CMS)throw new Error('The editor application did not start. Refresh this page to try again.');
   window.CMS.registerPreviewStyle('/style.css');
   const h=window.h;
   function PostPreview(props){

@@ -12,8 +12,11 @@ test('create, edit, hide and delete posts rebuild routes and preserve uploads',a
  const root=await mkdtemp(path.join(tmpdir(),'tidyhavens-test-'));
  try{
   for(const dir of ['public','content','templates'])await cp(path.join(original,dir),path.join(root,dir),{recursive:true});
-  await symlink(path.join(original,'node_modules'),path.join(root,'node_modules'),'dir');
+  await symlink(path.join(original,'node_modules'),path.join(root,'node_modules'),process.platform==='win32'?'junction':'dir');
   await build(root,{CMS_GITHUB_REPO:'test-owner/test-repository'});
+  const home=await readFile(path.join(root,'dist/index.html'),'utf8');assert.match(home,/rel="canonical" href="https:\/\/tidyhaven\.netlify\.app\/"/);assert.match(home,/application\/ld\+json/);
+  const robots=await readFile(path.join(root,'dist/robots.txt'),'utf8');assert.match(robots,/Sitemap: https:\/\/tidyhaven\.netlify\.app\/sitemap\.xml/);
+  const sitemap=await readFile(path.join(root,'dist/sitemap.xml'),'utf8');assert.match(sitemap,/japandi-anime-desk-setup/);
   const existing='dist/blog/japandi-anime-desk-setup/index.html';assert.match(await readFile(path.join(root,existing),'utf8'),/Japandi Meets Anime/);
   await mkdir(path.join(root,'public/uploads'),{recursive:true});await cp(path.join(root,'public/assets/tidyhavens-logo.png'),path.join(root,'public/uploads/example.png'));
   const file=path.join(root,'content/posts/a-new-desk.json');
