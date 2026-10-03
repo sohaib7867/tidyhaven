@@ -1,13 +1,4 @@
 {
-  "title": "Cozy Japanese-Inspired Desk Setup: 7 Products to Recreate the Look",
-  "date": "2026-09-30",
-  "category": "Home Office & Desk Setups",
-  "description": "Recreate a cozy Japanese-inspired desk setup with warm wood, a pegboard, monitor riser, green keyboard, desk lighting, floating shelves and more.",
-  "image": "/assets/cozy-japanese-anime-desk-setup.jpg",
-  "imageAlt": "Cozy Japanese-inspired bedroom desk with warm wood, plants, anime artwork and a scenic monitor display",
-  "visible": true,
-  "showCard": false,
-  "affiliate": true,
   "blocks": [
     {
       "type": "text",
@@ -87,5 +78,14 @@
       "heading": "Final Setup",
       "body": "A successful cozy desk setup is a balance between organization and personality.\n\nThe monitor shelf keeps the desk structured, the pegboard provides vertical organization, the green and cream keyboard brings character, and layered warm lighting makes the workspace feel inviting.\n\nAdd a few plants, books, Japanese-inspired artwork, and personal objects and you can turn an ordinary desk into a comfortable workspace that looks just as good during work hours as it does during a late-night gaming session."
     }
-  ]
+  ],
+  "affiliate": true,
+  "showCard": false,
+  "imageAlt": "Cozy Japanese-inspired bedroom desk with warm wood, plants, anime artwork and a scenic monitor display",
+  "date": "2026-09-30",
+  "visible": true,
+  "title": "Cozy Japanese-Inspired Desk Setup: 7 Products to Recreate the Look",
+  "image": "/uploads/chatgpt-image-sep-21-2026-02_23_02-pm.png",
+  "description": "Recreate a cozy Japanese-inspired desk setup with warm wood, a pegboard, monitor riser, green keyboard, desk lighting, floating shelves and more.",
+  "category": "Home Office & Desk Setups"
 }
