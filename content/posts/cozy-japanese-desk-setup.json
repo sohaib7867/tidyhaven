@@ -6,6 +6,7 @@
   "image": "/assets/cozy.jpg",
   "imageAlt": "Cozy Japanese-Inspired Desk Setup",
   "visible": true,
+  "showCard": false,
   "affiliate": true,
   "blocks": [
     {

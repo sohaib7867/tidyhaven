@@ -19,7 +19,8 @@ export async function build(root=path.resolve(fileURLToPath(new URL('..',import.
  const visible=posts.filter(p=>p.visible!==false).sort((a,b)=>b.date.localeCompare(a.date)||a.title.localeCompare(b.title));
  const vars={logo:escape(settings.logo),pinterest:escape(settings.pinterest)};
  const header=applyTemplate(await read('templates/header.html'),vars),footer=applyTemplate(await read('templates/footer.html'),vars);
- const section=`<section id="blog" class="blog-section" aria-labelledby="blog-title"><div class="section-head"><div><p class="eyebrow">THE TIDYHAVENS JOURNAL</p><h2 id="blog-title">Blog &amp; Guides</h2></div><a class="read-guide" href="/blog/">All guides</a></div><div class="blog-grid">${visible.slice(0,6).map(card).join('')||'<p>New guides are on the way.</p>'}</div></section>`;
+ const listed=visible.filter(p=>p.showCard!==false);
+ const section=`<section id="blog" class="blog-section" aria-labelledby="blog-title"><div class="section-head"><div><p class="eyebrow">THE TIDYHAVENS JOURNAL</p><h2 id="blog-title">Blog &amp; Guides</h2></div><a class="read-guide" href="/blog/">All guides</a></div><div class="blog-grid">${listed.slice(0,6).map(card).join('')||'<p>New guides are on the way.</p>'}</div></section>`;
  let home=applyTemplate(await read('templates/home.html'),{...vars,header,footer,headline:settings.headline.map((x,i)=>i===settings.headline.length-1?`<em>${escape(x)}</em>`:escape(x)).join('<br>'),intro:escape(settings.intro),heroImage:escape(settings.heroImage),heroAlt:escape(settings.heroAlt),blogSection:section});
  const rendered=visible.map((p,i)=>({slug:p.slug,html:article(p,header,footer,visible[(i+1)%visible.length]!==p?visible[(i+1)%visible.length]:null)}));
  // Validate all content before replacing output. Source and drafts never enter dist.
